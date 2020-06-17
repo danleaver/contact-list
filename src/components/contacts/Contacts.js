@@ -1,7 +1,7 @@
 import React from 'react';
 import { Table } from 'semantic-ui-react';
 import Contact from './Contact';
-const Contacts = ({ contacts }) => (
+const Contacts = ({ contacts, deleteContact }) => (
   <Table celled>
     <Table.Header>
       <Table.Row>
@@ -14,7 +14,7 @@ const Contacts = ({ contacts }) => (
       {
         contacts.map( c => (
           // <Contacts key={c.id} firstName={c.firstName} phone={c.phone} id={c.id} />
-          <Contact key={c.id} {...c} />
+          <Contact key={c.id} {...c} deleteContact={deleteContact} />
         ))
       }
     </Table.Body>

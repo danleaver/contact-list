@@ -24,6 +24,15 @@ class App extends Component {
     const newContact = { id: this.getId(), ...incomingContact }
     this.setState ({ contacts: [newContact, ...contacts ]})
   }
+
+  deleteContact = (id) => {
+    const contacts = this.state.contacts.filter( contact =>{
+      if (contact.id !== id) {
+        return contact
+      }
+    })
+    this.setState({ contacts })
+  }
   render() {
     const { contacts } = this.state
     return(
@@ -32,7 +41,7 @@ class App extends Component {
         <Header size="huge" color='blue' textAlign='center'>
           Contact list
         </Header>
-        <Contacts contacts={contacts} />
+        <Contacts contacts={contacts} deleteContact={this.deleteContact}/>
       </div>
     )
   }
